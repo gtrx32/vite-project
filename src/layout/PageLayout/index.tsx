@@ -8,7 +8,7 @@ interface PageLayoutProps extends PropsWithChildren { }
 const PageLayout: React.FC<PageLayoutProps> = ({ children }) => (
   <div className={s.wrapper}>
     <Header />
-    <main>{children}</main>
+    <main className={s.main}>{children}</main>
     <Footer />
   </div>
 );
