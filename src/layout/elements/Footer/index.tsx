@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import MainContainer from '../../../components/MainContainer';
 import s from './Footer.module.scss';
 
@@ -6,10 +7,10 @@ const Footer: React.FC = () => (
     <MainContainer>
       <div className={s.footer__inner}>
         <ul className={s.footer__menu}>
-          <li><a href="#" >Главная</a></li>
-          <li><a href="#" >Обзоры</a></li>
-          <li><a href="#" >Каталог</a></li>
-          <li><a href="#" >Чат</a></li>
+          <li><NavLink to="/" >Главная</NavLink></li>
+          <li><NavLink to="/reviews" >Обзоры</NavLink></li>
+          <li><NavLink to="/catalog" >Каталог</NavLink></li>
+          <li><NavLink to="/chat" >Чат</NavLink></li>
         </ul>
         <div className={s.footer__copyright}>
           <p>
