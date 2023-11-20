@@ -7,7 +7,7 @@ interface LoginPageProps {
 
 const LoginPage: React.FC<LoginPageProps> = () => {
   return (
-    <MainContainer>
+    <MainContainer className={s.loginContainer}>
       <Login />
     </MainContainer>
   )

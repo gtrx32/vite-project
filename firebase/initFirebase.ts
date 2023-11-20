@@ -15,6 +15,5 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 export const db = getFirestore(firebaseApp);
 export const storage = getStorage(firebaseApp);
-// Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(firebaseApp);
 export default firebaseApp;

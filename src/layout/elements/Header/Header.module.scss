@@ -39,14 +39,31 @@
       display: flex;
       align-items: center;
       height: 100%;
+
+      img {
+        height: 70%;
+      }
     }
   }
-}
 
-.header__logo>a>img {
-  height: 70%;
-}
+  &__user {
+    display: flex;
+    gap: 20px;
+  }
 
-.header__user>a>img {
-  height: 50%;
+  &__userdata,
+  &__auth {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+  }
+
+  &__button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    text-decoration: underline;
+    padding: 0;
+  }
 }

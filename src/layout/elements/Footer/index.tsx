@@ -18,10 +18,10 @@ const Footer: React.FC = () => (
           </p>
         </div>
         <ul className={s.footer__links}>
-          <li><a href="#"><img src="/vkontakte.png" alt="vk" /></a></li>
-          <li><a href="#"><img src="/telegram.png" alt="tg" /></a></li>
-          <li><a href="#"><img src="/github.png" alt="gh" /></a></li>
-          <li><a href="#"><img src="/discord.png" alt="ds" /></a></li>
+          <li><a href="#"><img src="icons/vkontakte.png" alt="vk" /></a></li>
+          <li><a href="#"><img src="icons/telegram.png" alt="tg" /></a></li>
+          <li><a href="#"><img src="icons/github.png" alt="gh" /></a></li>
+          <li><a href="#"><img src="icons/discord.png" alt="ds" /></a></li>
         </ul>
       </div>
     </MainContainer>

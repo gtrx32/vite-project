@@ -4,6 +4,8 @@ import { db } from '../../../firebase/initFirebase';
 import s from './Chat.module.scss';
 import { useUser } from '../../hooks/useUser';
 import { Message } from './types';
+import clsx from 'clsx';
+import { NavLink } from 'react-router-dom';
 
 interface ChatProps {
 }
@@ -40,7 +42,7 @@ const Chat: React.FC<ChatProps> = () => {
     setValue('');
   };
 
-  const formatTimestamp = (timestamp: Timestamp | null | undefined) => {
+  const formatDate = (timestamp: Timestamp | null | undefined) => {
     if (!timestamp) {
       return 'Invalid Timestamp';
     }
@@ -48,7 +50,7 @@ const Chat: React.FC<ChatProps> = () => {
     return date.toLocaleDateString();
   };
 
-  const formatTimestamp2 = (timestamp: Timestamp | null | undefined) => {
+  const formatTime = (timestamp: Timestamp | null | undefined) => {
     if (!timestamp) {
       return 'Invalid Timestamp';
     }
@@ -58,22 +60,24 @@ const Chat: React.FC<ChatProps> = () => {
 
   return (
     <div className={s.chat}>
-      <div className={s.chatdiv}>
+      <h2>Чат</h2>
+      <div className={s.chat__messages}>
         {messages.map((message) => (
-          <div key={message.id} className={message.data?.data()?.email === user?.email ? s.me : s.other}>
-            <div className={s.username}><span>{message.data?.data()?.name}</span></div>
-            <div className={s.text}><span>{message.data?.data()?.text}</span></div>
-            <div className={s.datetime}>
-              <span className={s.time}>{formatTimestamp2(message.data?.data()?.timestamp)}, </span>
-              <span className={s.date}>{formatTimestamp(message.data?.data()?.timestamp)}</span>
+          <div key={message.id} className={clsx(s.message, message.data?.data()?.email === user?.email ? s.message_mine : s.message_other)}>
+            <div className={s.message__username}>{message.data?.data()?.name}</div>
+            <div className={s.message__text}>{message.data?.data()?.text}</div>
+            <div className={s.message__datetime}>
+              {formatDate(message.data?.data()?.timestamp)} | {formatTime(message.data?.data()?.timestamp)}
             </div>
           </div>
         ))}
       </div>
-      <form onSubmit={sendMessage}>
+      {user && <form onSubmit={sendMessage}>
         <textarea value={value} onChange={(e) => setValue(e.target.value)} />
         <button type="submit">Отправить</button>
-      </form>
+      </form>}
+      {!user && <p>Отправка сообщений доступна только авторизованным пользователям.
+        <NavLink className={s.authlink} to="/login"> Авторизоваться</NavLink></p>}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import CatalogPage from "../pages/CatalogPage";
 import ChatPage from "../pages/ChatPage";
 import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
+import ProfilePage from "../pages/ProfilePage";
 
 const AppRouter: React.FC = () => (
   <Routes>
@@ -14,6 +15,7 @@ const AppRouter: React.FC = () => (
     <Route path="/chat" element={<ChatPage />} />
     <Route path="/register" element={<RegisterPage />} />
     <Route path="/login" element={<LoginPage />} />
+    <Route path="/profile" element={<ProfilePage />} />
   </Routes>
 );
 

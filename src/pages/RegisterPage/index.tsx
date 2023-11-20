@@ -7,7 +7,7 @@ interface RegisterPageProps {
 
 const RegisterPage: React.FC<RegisterPageProps> = () => {
   return (
-    <MainContainer>
+    <MainContainer className={s.registerContainer}>
       <Register />
     </MainContainer>
   )

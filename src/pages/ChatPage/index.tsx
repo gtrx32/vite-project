@@ -7,7 +7,7 @@ interface ChatPageProps {
 
 const ChatPage: React.FC<ChatPageProps> = () => {
   return (
-    <MainContainer>
+    <MainContainer className={s.chatContainer}>
       <Chat />
     </MainContainer>
   )
