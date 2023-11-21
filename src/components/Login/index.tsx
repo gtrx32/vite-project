@@ -19,7 +19,10 @@ const Login: React.FC = () => {
 
   const onLogin = () => {
     signInWithEmailAndPassword(auth, user.email, user.password).then(() => {
-      navigate('/')
+      navigate('/');
+    }).catch((error) => {
+      // Обработка ошибок signInWithEmailAndPassword
+      console.error('Произошла ошибка при входе в систему:', error);
     });
   }
 

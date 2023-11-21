@@ -30,12 +30,15 @@ const Register: React.FC = () => {
     if (isCorrect)
       createUserWithEmailAndPassword(auth, user.email, user.password).then(() => {
         if (auth.currentUser) {
-          updateProfile(auth.currentUser, { displayName: user.name }).then(() => {
-            auth.currentUser?.reload()
+          return updateProfile(auth.currentUser, { displayName: user.name }).then(() => {
+            return auth.currentUser?.reload();
           }).then(() => {
-            navigate('/')
+            navigate('/');
           })
         }
+      }).catch((error) => {
+        console.error('Произошла ошибка при создании пользователя:', error);
+        // Обработка ошибок createUserWithEmailAndPassword
       });
   }
 
