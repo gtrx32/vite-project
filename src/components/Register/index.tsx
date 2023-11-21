@@ -1,38 +1,51 @@
 import s from './Register.module.scss';
-import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../../firebase/initFirebase'
 import { RegisterUser, initialValue } from './types';
+import Button from '../UI/Button';
+import Input from '../UI/Input';
+import Invitation from '../UI/Invitation';
 
 const Register: React.FC = () => {
-  const [user, setUser] = useState<RegisterUser>(initialValue);
   const navigate = useNavigate()
+  const [user, setUser] = useState<RegisterUser>(initialValue);
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
   const onHandleChange = ({ target: { name, value } }: React.ChangeEvent<HTMLInputElement>) => {
     setUser({ ...user, [name]: value })
   }
 
+  useEffect(() => {
+    if (user.password !== user.passwordRep
+      || user.password.length < 6
+      || user.email.length < 6
+      || user.name.length === 0) setIsCorrect(false)
+    else setIsCorrect(true);
+  }, [user]);
+
   const onRegister = () => {
-    createUserWithEmailAndPassword(auth, user.email, user.password).then(() => {
-      if (auth.currentUser) {
-        updateProfile(auth.currentUser, { displayName: user.name }).then(() => {
-          auth.currentUser?.reload()
-        }).then(() => {
-          navigate('/')
-        })
-      }
-    });
+    if (isCorrect)
+      createUserWithEmailAndPassword(auth, user.email, user.password).then(() => {
+        if (auth.currentUser) {
+          updateProfile(auth.currentUser, { displayName: user.name }).then(() => {
+            auth.currentUser?.reload()
+          }).then(() => {
+            navigate('/')
+          })
+        }
+      });
   }
 
   return (
     <div className={s.form}>
-      <input placeholder='Имя' onChange={onHandleChange} type="text" name="name" />
-      <input placeholder='Логин' onChange={onHandleChange} type="email" name="email" />
-      <input placeholder='Пароль' onChange={onHandleChange} type="password" name="password" />
-      <input placeholder='Повторите пароль' type="password" name="password2" />
-      <button onClick={onRegister} >Зарегистрироваться</button>
-      <p>Уже есть учетная запись? <NavLink className={s.authlink} to="/login">Авторизуйтесь</NavLink></p>
+      <Input placeholder="Имя" type="text" name="name" onChange={onHandleChange} />
+      <Input placeholder="Почта" type="email" name="email" onChange={onHandleChange} />
+      <Input placeholder="Пароль" type="password" name="password" onChange={onHandleChange} />
+      <Input placeholder="Повторите пароль" type="password" name="passwordRep" onChange={onHandleChange} />
+      <Button onClick={onRegister}>Зарегистрироваться</Button>
+      <Invitation path="/login" text="Уже есть учетная запись? ">Авторизуйтесь</Invitation>
     </div>
   )
 };

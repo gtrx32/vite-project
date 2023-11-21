@@ -1,0 +1,15 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.button {
+  background-color: transparent;
+  color: var(--color-white);
+  border: none;
+  text-decoration: underline;
+  padding: 0;
+}

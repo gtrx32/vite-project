@@ -2,7 +2,7 @@
   position: fixed;
   width: 100%;
   backdrop-filter: blur(5px);
-  background-color: #2e2e3ddc;
+  background-color: var(--main-color-transparent);
 
   &__inner {
     display: flex;
@@ -29,8 +29,7 @@
     }
   }
 
-  &__logo,
-  &__user {
+  &__logo {
     display: flex;
     align-items: center;
     height: 100%;
@@ -44,26 +43,5 @@
         height: 70%;
       }
     }
-  }
-
-  &__user {
-    display: flex;
-    gap: 20px;
-  }
-
-  &__userdata,
-  &__auth {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 5px;
-  }
-
-  &__button {
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    text-decoration: underline;
-    padding: 0;
   }
 }

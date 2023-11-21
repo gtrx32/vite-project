@@ -1,6 +1,6 @@
 .footer {
   backdrop-filter: blur(5px);
-  background-color: #2e2e3ddc;
+  background-color: var(--main-color-transparent);
 
   &__inner {
     display: flex;
@@ -13,14 +13,6 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-
-    li {
-      list-style: none;
-
-      a {
-        color: inherit;
-      }
-    }
   }
 
   &__links {
@@ -30,7 +22,7 @@
     height: 100%;
 
     li {
-      height: 20%;
+      height: 15%;
 
       img {
         height: 100%;
