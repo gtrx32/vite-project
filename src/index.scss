@@ -5,3 +5,19 @@
   font-size: 16px;
   color: var(--color-white);
 }
+
+body {
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color1);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--main-color);
+}

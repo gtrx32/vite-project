@@ -1,5 +1,6 @@
 .header {
-  position: fixed;
+  position: sticky;
+  top: 0;
   width: 100%;
   backdrop-filter: blur(5px);
   background-color: var(--main-color-transparent);

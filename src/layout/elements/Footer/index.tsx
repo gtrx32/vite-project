@@ -3,15 +3,9 @@ import MainContainer from '../../../components/MainContainer';
 import s from './Footer.module.scss';
 
 const Footer: React.FC = () => (
-  <div className={s.footer}>
+  <footer className={s.footer}>
     <MainContainer>
       <div className={s.footer__inner}>
-        <ul className={s.footer__menu}>
-          <li><NavLink to="/" >Главная</NavLink></li>
-          <li><NavLink to="/reviews" >Обзоры</NavLink></li>
-          <li><NavLink to="/catalog" >Каталог</NavLink></li>
-          <li><NavLink to="/chat" >Чат</NavLink></li>
-        </ul>
         <div className={s.footer__copyright}>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt rerum libero nihil, quidem impedit sapiente!
@@ -25,7 +19,7 @@ const Footer: React.FC = () => (
         </ul>
       </div>
     </MainContainer>
-  </div>
+  </footer>
 );
 
 export default Footer;

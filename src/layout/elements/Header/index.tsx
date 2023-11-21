@@ -5,7 +5,7 @@ import AuthBlock from './AuthBlock';
 
 const Header: React.FC = () => {
   return (
-    <div className={s.header}>
+    <header className={s.header}>
       <MainContainer>
         <div className={s.header__inner}>
           <div className={s.header__logo}>
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
           <AuthBlock />
         </div>
       </MainContainer >
-    </div >
+    </header >
   )
 };
 
