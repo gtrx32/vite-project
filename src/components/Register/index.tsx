@@ -7,6 +7,7 @@ import { RegisterUser, initialValue } from './types';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import Invitation from '../UI/Invitation';
+import FormInput from '../UI/FormInput';
 
 const Register: React.FC = () => {
   const navigate = useNavigate()
@@ -39,14 +40,14 @@ const Register: React.FC = () => {
   }
 
   return (
-    <div className={s.form}>
+    <FormInput className={s.authForm}>
       <Input placeholder="Имя" type="text" name="name" onChange={onHandleChange} />
       <Input placeholder="Почта" type="email" name="email" onChange={onHandleChange} />
       <Input placeholder="Пароль" type="password" name="password" onChange={onHandleChange} />
       <Input placeholder="Повторите пароль" type="password" name="passwordRep" onChange={onHandleChange} />
       <Button onClick={onRegister}>Зарегистрироваться</Button>
       <Invitation path="/login" text="Уже есть учетная запись? ">Авторизуйтесь</Invitation>
-    </div>
+    </FormInput>
   )
 };
 

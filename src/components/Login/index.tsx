@@ -7,6 +7,7 @@ import s from './Login.module.scss';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import Invitation from '../UI/Invitation';
+import FormInput from '../UI/FormInput';
 
 const Login: React.FC = () => {
   const navigate = useNavigate()
@@ -23,12 +24,12 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div className={s.form}>
+    <FormInput className={s.authForm}>
       <Input placeholder="Почта" type="email" name="email" onChange={onHandleChange} />
       <Input placeholder="Пароль" type="password" name="password" onChange={onHandleChange} />
       <Button onClick={onLogin}>Войти</Button>
       <Invitation path="/register" text="Нет учетной записи? ">Зарегистрируйтесь</Invitation>
-    </div>
+    </FormInput>
   )
 };
 

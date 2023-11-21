@@ -1,20 +1,11 @@
+import { ComponentPropsWithoutRef } from 'react';
 import s from './Input.module.scss';
+import clsx from 'clsx';
 
-interface InputProps {
-  placeholder: string;
-  type: string;
-  name: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+interface InputProps extends ComponentPropsWithoutRef<'input'> { }
 
-const Input: React.FC<InputProps> = ({ placeholder, type, name, onChange }) => (
-  <input
-    className={s.input}
-    placeholder={placeholder}
-    type={type}
-    name={name}
-    onChange={onChange}
-  />
+const Input: React.FC<InputProps> = ({ className, ...props }) => (
+  <input className={clsx(s.input, className)} {...props} />
 );
 
 export default Input;
