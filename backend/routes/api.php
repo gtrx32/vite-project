@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user/{id}', [ApiController::class, 'user']);
 Route::get('/users', [ApiController::class, 'users']);
 Route::post('/user', [ApiController::class, 'create']);
+Route::get('/games', [ApiController::class, 'games']);

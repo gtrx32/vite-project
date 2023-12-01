@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Game;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -23,6 +24,11 @@ class ApiController extends Controller
     public function users(): JsonResponse
     {
         return response()->json(User::all());
+    }
+
+    public function games(): JsonResponse
+    {
+        return response()->json(Game::all());
     }
 
     public function create(Request $request): JsonResponse
