@@ -17,5 +17,7 @@ class Game extends Model
 		'platform',
 		'imageUrl',
 		'genres',
+		'description',
+		'images',
 	];
 }

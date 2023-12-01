@@ -73,7 +73,17 @@ class GameController extends CrudController
         $this->crud->addField([
             'name' => 'imageUrl',
             'type' => 'text',
-            'label' => 'Изображение',
+            'label' => 'Главное изображение',
+        ]);
+        $this->crud->addField([
+            'name' => 'images',
+            'type' => 'textarea',
+            'label' => 'Изображения для слайдера (вводим с новой строки, а на фронте разбиваем на массив)',
+        ]);
+        $this->crud->addField([
+            'name' => 'description',
+            'type' => 'textarea',
+            'label' => 'Описание',
         ]);
         $this->crud->addField([
             'name' => 'genres',
@@ -99,6 +109,8 @@ class GameController extends CrudController
             'platform' => 'required',
             'imageUrl' => 'required',
             'genres' => 'required',
+            'description' => 'required',
+            'images' => 'required',
         ]);
 
         $games = $this->crud->create([
@@ -108,6 +120,8 @@ class GameController extends CrudController
             'platform' => $request->platform,
             'imageUrl' => $request->imageUrl,
             'genres' => $request->genres,
+            'description' => $request->description,
+            'images' => $request->images,
         ]);
 
         $games->save();

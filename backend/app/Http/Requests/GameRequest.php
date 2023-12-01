@@ -29,6 +29,8 @@ class GameRequest extends FormRequest
             'platform' => 'required',
             'imageUrl' => 'required',
             'genres' => 'required',
+            'description' => 'required',
+            'images' => 'required',
         ];
     }
 
@@ -48,6 +50,8 @@ class GameRequest extends FormRequest
             'platform.required' => 'Это поле обязательно для заполнения',
             'imageUrl.required' => 'Это поле обязательно для заполнения',
             'genres.required' => 'Это поле обязательно для заполнения',
+            'description.required' => 'Это поле обязательно для заполнения',
+            'images.required' => 'Это поле обязательно для заполнения',
         ];
     }
 }
