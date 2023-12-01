@@ -78,7 +78,7 @@ class GameController extends CrudController
         $this->crud->addField([
             'name' => 'genres',
             'type' => 'text',
-            'label' => 'Жанры',
+            'label' => 'Жанры (вводим через запятую, а на фронте разбиваем строку на массив)',
         ]);
     }
 
