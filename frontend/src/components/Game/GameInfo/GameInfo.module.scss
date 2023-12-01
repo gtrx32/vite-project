@@ -1,0 +1,36 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__preview {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__image img {
+    border-radius: 5px;
+  }
+
+  &__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__title {}
+
+  &__parameter {
+    display: flex;
+    width: 100%;
+
+    &-title {
+      flex-basis: 150px;
+    }
+
+    &-value {
+      flex: 1 1 auto;
+    }
+  }
+}
