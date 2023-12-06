@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ApiController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user/{id}', [ApiController::class, 'user']);
 Route::get('/users', [ApiController::class, 'users']);
 Route::post('/user', [ApiController::class, 'create']);
+
 Route::get('/games', [ApiController::class, 'games']);
+
+Route::get('/messages', [ApiController::class, 'messages']);
+Route::post('/message', [ApiController::class, 'createMessage']);

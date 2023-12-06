@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Game;
+use App\Models\Message;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -31,6 +32,30 @@ class ApiController extends Controller
         return response()->json(Game::all());
     }
 
+    public function messages(): JsonResponse
+    {
+        return response()->json(Message::all());
+    }
+
+    public function createMessage(Request $request): JsonResponse
+    {
+        try {
+            $message = Message::create([
+                'text' => $request['text'],
+                'date' => $request['date'],
+                'userName' => $request['userName'],
+                'userEmail' => $request['userEmail']
+            ]);
+    
+            return response()->json([
+                'message' => 'Message successfully created',
+                'data' => $message
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
+    }
+    
     public function create(Request $request): JsonResponse
     {
         try {
