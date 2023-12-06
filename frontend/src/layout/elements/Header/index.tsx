@@ -3,7 +3,7 @@ import MainContainer from '../../../components/MainContainer';
 import s from './Header.module.scss';
 import AuthBlock from './AuthBlock';
 
-const Header: React.FC = () => {
+const Header = () => {
   return (
     <header className={s.header}>
       <MainContainer>

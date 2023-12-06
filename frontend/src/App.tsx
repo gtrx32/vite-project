@@ -1,15 +1,18 @@
-import AppRouter from "./AppRouter"
-import PageLayout from "./layout/PageLayout"
-import { BrowserRouter } from "react-router-dom"
+import AppRouter from './AppRouter';
+import { ContextProvider, useStateContext } from './context/ContextProvider';
+import PageLayout from './layout/PageLayout';
+import { BrowserRouter, useNavigate } from 'react-router-dom';
 
 function App() {
   return (
-    <BrowserRouter>
-      <PageLayout>
-        <AppRouter />
-      </PageLayout>
-    </BrowserRouter>
-  )
+    <ContextProvider>
+      <BrowserRouter>
+        <PageLayout>
+          <AppRouter />
+        </PageLayout>
+      </BrowserRouter>
+    </ContextProvider>
+  );
 }
 
-export default App
+export default App;

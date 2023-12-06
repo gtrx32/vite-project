@@ -6,21 +6,50 @@ import Input from '../UI/Input';
 import Invitation from '../UI/Invitation';
 import FormInput from '../UI/FormInput';
 import { LoginUser, initialValue } from './types';
+import { axiosClient } from '../../api/client';
+import { useStateContext } from '../../context/ContextProvider';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState<LoginUser>(initialValue);
+  const [user, _setUser] = useState<LoginUser>(initialValue);
+  const [errors, setErrors] = useState(null);
+
+  const { setToken, setUser } = useStateContext();
 
   const onHandleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setUser({ ...user, [target.name]: target.value });
+    _setUser({ ...user, [target.name]: target.value });
   };
 
   const onLogin = () => {
-    // Проверка на пустые поля
+    const payload = {
+      email: user.email,
+      password: user.password,
+    };
+
+    axiosClient
+      .post('/login', payload)
+      .then(({ data }) => {
+        setToken(data.token);
+        setUser(data.user);
+        navigate('/');
+      })
+      .catch(error => {
+        const response = error.response;
+        if (response && response.status === 422) {
+          setErrors(response.data.errors);
+        }
+      });
   };
 
   return (
     <FormInput className={s.authForm}>
+      {errors && (
+        <div className='alert'>
+          {Object.keys(errors).map(key => (
+            <p key={key}>{errors[key]}</p>
+          ))}
+        </div>
+      )}
       <Input placeholder='Почта' type='email' name='email' onChange={onHandleChange} />
       <Input placeholder='Пароль' type='password' name='password' onChange={onHandleChange} />
       <Button onClick={onLogin}>Войти</Button>

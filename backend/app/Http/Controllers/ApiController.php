@@ -82,33 +82,31 @@ class ApiController extends Controller
         }
     }
 
-    public function login(LoginRequest $request): JsonResponse 
+    public function login(LoginRequest $request) 
     {
         $credentials = $request->validated();
         if(!Auth::attempt($credentials)) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return response([
+                'message' => 'Provided email or password is incorrect',
+                'errors' => [
+                    'text' => 'Provided email or password is incorrect',
+                ]
+            ], 422);
         }
 
         /** @var \App\Models\User $user */
         $user = Auth::user();
         $token = $user->createToken('main')->plainTextToken;
 
-        return response()->json([
-            'message' => 'success',
-            'data' => $user,
-            'token' => $token
-        ]);
+        return response(compact('user', 'token'));
     }
 
-    public function logout(Request $request): JsonResponse
+    public function logout(Request $request)
     {
         /** @var \App\Models\User $user */
         $user = $request->user();
         $user->currentAccessToken()->delete();
 
-        return response()->json([
-            'message' => 'success',
-            'data' => null
-        ]);
+        return response("", 204);
     }
 }
