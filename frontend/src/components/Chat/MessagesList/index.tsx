@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { message } from '../types';
 import s from './MessagesList.module.scss';
 import Message from './Message';
@@ -9,7 +9,8 @@ interface MessagesListProps {}
 const MessagesList: React.FC<MessagesListProps> = () => {
   const [messages, setMessages] = useState<message[]>([]);
   const { user } = useStateContext();
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const memoMessages = useMemo(() => messages, [messages.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,11 +32,11 @@ const MessagesList: React.FC<MessagesListProps> = () => {
     if (ref.current) {
       ref.current.scrollTop = ref.current.scrollHeight;
     }
-  }, [messages]);
+  }, [memoMessages]);
 
   return (
     <div className={s.chat__messages} ref={ref}>
-      {messages.map(message => {
+      {memoMessages.map(message => {
         return <Message isCurrentUser={message.userEmail === user?.email} key={message.id} name={message?.userName} text={message.text} datetime={message.date} />;
       })}
     </div>
