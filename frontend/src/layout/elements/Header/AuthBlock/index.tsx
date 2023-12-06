@@ -17,9 +17,9 @@ const AuthBlock = () => {
 
   return (
     <>
-      {user.name ? (
+      {user?.name ? (
         <div className={s.auth}>
-          <NavLink to='/profile'>{user.name}</NavLink>
+          <NavLink to='/profile'>{user?.name}</NavLink>
           <button className={s.button} onClick={onLogout}>
             Выйти
           </button>

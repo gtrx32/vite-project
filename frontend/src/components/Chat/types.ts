@@ -1,6 +1,7 @@
-import { DocumentSnapshot } from 'firebase/firestore';
-
 export interface message {
   id: string;
-  data: DocumentSnapshot | undefined;
+  userEmail: string;
+  userName: string;
+  text: string;
+  date: string;
 }
