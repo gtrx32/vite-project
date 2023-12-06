@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\SugnupRequest;
 use App\Models\User;
 use App\Models\Game;
 use App\Models\Message;
@@ -9,6 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
 {
@@ -56,21 +59,56 @@ class ApiController extends Controller
         }
     }
     
-    public function create(Request $request): JsonResponse
+    public function create(SugnupRequest $request): JsonResponse
     {
         try {
+            $data = $request->validated();
+            /** @var \App\Models\User $user */
             $user = User::create([
-                'name' => $request['name'],
-                'email' => $request['email'],
-                'password' => Hash::make($request['password'])
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password'])
             ]);
+    
+            $token = $user->createToken("main")->plainTextToken;
     
             return response()->json([
                 'message' => 'User successfully created',
-                'data' => $user
+                'data' => $user,
+                'token' => $token
             ]);
         } catch (\Throwable $e) {
             return response()->json(['message' => $e->getMessage()], 400);
         }
+    }
+
+    public function login(LoginRequest $request): JsonResponse 
+    {
+        $credentials = $request->validated();
+        if(!Auth::attempt($credentials)) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+        $token = $user->createToken('main')->plainTextToken;
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $user,
+            'token' => $token
+        ]);
+    }
+
+    public function logout(Request $request): JsonResponse
+    {
+        /** @var \App\Models\User $user */
+        $user = $request->user();
+        $user->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'success',
+            'data' => null
+        ]);
     }
 }

@@ -1,9 +1,9 @@
-type LoginUser = {
+export type LoginUser = {
   email: string,
   password: string
 }
 
-const initialValue: LoginUser = {
+export const initialValue: LoginUser = {
   email: "",
   password: ""
 }

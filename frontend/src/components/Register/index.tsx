@@ -1,8 +1,6 @@
 import s from './Register.module.scss';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from '../../../firebase/initFirebase'
 import { RegisterUser, initialValue } from './types';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
@@ -27,19 +25,9 @@ const Register: React.FC = () => {
   }, [user]);
 
   const onRegister = () => {
-    if (isCorrect)
-      createUserWithEmailAndPassword(auth, user.email, user.password).then(() => {
-        if (auth.currentUser) {
-          return updateProfile(auth.currentUser, { displayName: user.name }).then(() => {
-            return auth.currentUser?.reload();
-          }).then(() => {
-            navigate('/');
-          })
-        }
-      }).catch((error) => {
-        console.error('Произошла ошибка при создании пользователя:', error);
-        // Обработка ошибок createUserWithEmailAndPassword
-      });
+    if (isCorrect) {
+      // asd
+    }
   }
 
   return (
