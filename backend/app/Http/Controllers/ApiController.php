@@ -35,6 +35,16 @@ class ApiController extends Controller
         return response()->json(Game::all());
     }
 
+    public function game($id): JsonResponse
+    {
+        $game = Game::find($id);
+
+        if (!$game)
+            return response()->json(['message' => 'Game not found'], 404);
+
+        return response()->json($game);
+    }
+
     public function messages(): JsonResponse
     {
         return response()->json(Message::all());

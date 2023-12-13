@@ -27,5 +27,6 @@ Route::post('/signup', [ApiController::class, 'create']);
 Route::post('/login', [ApiController::class, 'login']);
 
 Route::get('/games', [ApiController::class, 'games']);
+Route::get('/game/{id}', [ApiController::class, 'game']);
 
 Route::get('/messages', [ApiController::class, 'messages']);
