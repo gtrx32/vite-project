@@ -29,6 +29,10 @@ const Game = () => {
     }
   }, []);
 
+  useEffect(() => {
+    document.title = game ? game.name : '';
+  },[game])
+
   return (
     <>
       {game && (
