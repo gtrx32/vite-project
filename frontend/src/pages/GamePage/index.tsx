@@ -1,11 +1,19 @@
 import MainContainer from '../../components/MainContainer';
 import Game from '../../components/Game';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const GamePage = () => {
   const params = useParams();
+  const navigate = useNavigate();
 
-  console.log(params); // 👉️ {userId: '4200'}
+  useEffect(() => {
+    if (params.id && isNaN(+params.id)) {
+      navigate('/404');
+    } else {
+      console.log(params.id);
+    }
+  }, []);
 
   return (
     <MainContainer>
