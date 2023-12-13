@@ -7,6 +7,8 @@ import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import ProfilePage from '../pages/ProfilePage';
 import GamePage from '../pages/GamePage';
+import MainContainer from '../components/MainContainer';
+import NotFoundPage from '../pages/NotFoundPage';
 
 const AppRouter = () => (
   <Routes>
@@ -18,6 +20,8 @@ const AppRouter = () => (
     <Route path='/login' element={<LoginPage />} />
     <Route path='/profile' element={<ProfilePage />} />
     <Route path='/game/:id' element={<GamePage />} />
+    <Route path='*' element={<MainPage />} />
+    <Route path='/404' element={<NotFoundPage />} />
   </Routes>
 );
 
