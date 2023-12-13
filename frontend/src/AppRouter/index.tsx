@@ -7,7 +7,6 @@ import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import ProfilePage from '../pages/ProfilePage';
 import GamePage from '../pages/GamePage';
-import MainContainer from '../components/MainContainer';
 import NotFoundPage from '../pages/NotFoundPage';
 
 const AppRouter = () => (

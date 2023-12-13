@@ -15,7 +15,12 @@ const Game = () => {
       navigate('/404');
     } else {
       const fetchData = async () => {
-        const response = await fetch('http://127.0.0.1:8000/api/game/' + params.id);
+        const response = await fetch('http://127.0.0.1:8000/api/game/' + params.id).then(response => {
+          if (!response.ok) {
+            navigate('/404');
+          }
+          return response;
+        });
         const data = await response.json();
         setGame(data);
       };
