@@ -28,8 +28,10 @@ const CatalogPage: React.FC<CatalogPageProps> = () => {
             <div className={s['game__image']}>
               <img loading='lazy' src={imageUrl} alt='' />
             </div>
-            <div className={s['game__name']}>{name}</div>
-            <div className={s['game__platform']}>{platform}</div>
+            <div className={s['game__info']}>
+              <div className={s['game__name']}>{name}</div>
+              <div className={s['game__platform']}>{platform}</div>
+            </div>
           </div>
         ))}
       </div>
