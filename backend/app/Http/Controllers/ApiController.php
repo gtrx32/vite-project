@@ -69,7 +69,7 @@ class ApiController extends Controller
         }
     }
     
-    public function create(SugnupRequest $request): JsonResponse
+    public function create(SugnupRequest $request)
     {
         try {
             $data = $request->validated();
@@ -81,12 +81,8 @@ class ApiController extends Controller
             ]);
     
             $token = $user->createToken("main")->plainTextToken;
-    
-            return response()->json([
-                'message' => 'User successfully created',
-                'data' => $user,
-                'token' => $token
-            ]);
+            
+            return response(compact('user', 'token'));
         } catch (\Throwable $e) {
             return response()->json(['message' => $e->getMessage()], 400);
         }
