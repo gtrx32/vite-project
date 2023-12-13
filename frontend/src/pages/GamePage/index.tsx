@@ -1,16 +1,17 @@
 import MainContainer from '../../components/MainContainer';
 import Game from '../../components/Game';
-import s from './GamePage.module.scss';
+import { useParams } from 'react-router-dom';
 
-interface GamePageProps {
-}
+const GamePage = () => {
+  const params = useParams();
 
-const GamePage: React.FC<GamePageProps> = () => {
+  console.log(params); // 👉️ {userId: '4200'}
+
   return (
     <MainContainer>
       <Game />
     </MainContainer>
-  )
+  );
 };
 
 export default GamePage;

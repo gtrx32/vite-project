@@ -1,10 +1,8 @@
 import clsx from 'clsx';
 import s from './GameInfo.module.scss';
 
-interface GameInfoProps {
-}
 
-const GameInfo: React.FC<GameInfoProps> = () => {
+const GameInfo = () => {
   return (
     <div className={s.game}>
       <div className={s.game__preview}>

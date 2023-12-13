@@ -1,23 +1,23 @@
-import { Routes, Route } from "react-router-dom";
-import MainPage from "../pages/MainPage";
-import ReviewsPage from "../pages/ReviewsPage";
-import CatalogPage from "../pages/CatalogPage";
-import ChatPage from "../pages/ChatPage";
-import RegisterPage from "../pages/RegisterPage";
-import LoginPage from "../pages/LoginPage";
-import ProfilePage from "../pages/ProfilePage";
-import GamePage from "../pages/GamePage";
+import { Routes, Route } from 'react-router-dom';
+import MainPage from '../pages/MainPage';
+import ReviewsPage from '../pages/ReviewsPage';
+import CatalogPage from '../pages/CatalogPage';
+import ChatPage from '../pages/ChatPage';
+import RegisterPage from '../pages/RegisterPage';
+import LoginPage from '../pages/LoginPage';
+import ProfilePage from '../pages/ProfilePage';
+import GamePage from '../pages/GamePage';
 
-const AppRouter: React.FC = () => (
+const AppRouter = () => (
   <Routes>
-    <Route path="/" element={<MainPage />} />
-    <Route path="/reviews" element={<ReviewsPage />} />
-    <Route path="/catalog" element={<CatalogPage />} />
-    <Route path="/chat" element={<ChatPage />} />
-    <Route path="/register" element={<RegisterPage />} />
-    <Route path="/login" element={<LoginPage />} />
-    <Route path="/profile" element={<ProfilePage />} />
-    <Route path="/game" element={<GamePage />} />
+    <Route path='/' element={<MainPage />} />
+    <Route path='/reviews' element={<ReviewsPage />} />
+    <Route path='/catalog' element={<CatalogPage />} />
+    <Route path='/chat' element={<ChatPage />} />
+    <Route path='/register' element={<RegisterPage />} />
+    <Route path='/login' element={<LoginPage />} />
+    <Route path='/profile' element={<ProfilePage />} />
+    <Route path='/game/:id' element={<GamePage />} />
   </Routes>
 );
 

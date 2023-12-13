@@ -1,6 +1,10 @@
-import { NavLink } from 'react-router-dom';
 import MainContainer from '../../../components/MainContainer';
 import s from './Footer.module.scss';
+
+import vkontakte from "../../../../public/icons/vkontakte.png";
+import telegram from "../../../../public/icons/telegram.png";
+import github from "../../../../public/icons/github.png";
+import discord from "../../../../public/icons/discord.png";
 
 const Footer: React.FC = () => (
   <footer className={s.footer}>
@@ -12,10 +16,10 @@ const Footer: React.FC = () => (
           </p>
         </div>
         <ul className={s.footer__links}>
-          <li><a href="#"><img src="icons/vkontakte.png" alt="vk" /></a></li>
-          <li><a href="#"><img src="icons/telegram.png" alt="tg" /></a></li>
-          <li><a href="#"><img src="icons/github.png" alt="gh" /></a></li>
-          <li><a href="#"><img src="icons/discord.png" alt="ds" /></a></li>
+          <li><a href="#"><img src={vkontakte} alt="vk" /></a></li>
+          <li><a href="#"><img src={telegram} alt="tg" /></a></li>
+          <li><a href="#"><img src={github} alt="gh" /></a></li>
+          <li><a href="#"><img src={discord} alt="ds" /></a></li>
         </ul>
       </div>
     </MainContainer>
