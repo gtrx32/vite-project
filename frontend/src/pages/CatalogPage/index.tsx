@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import MainContainer from '../../components/MainContainer';
 import s from './CatalogPage.module.scss';
-import { CatalogPageProps, Game } from './types';
+import { CatalogPageProps, GameType } from './types';
 
 const CatalogPage: React.FC<CatalogPageProps> = () => {
-  const [data, setData] = useState<Game[]>([]);
+  const [data, setData] = useState<GameType[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {

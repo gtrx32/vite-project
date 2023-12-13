@@ -1,6 +1,6 @@
 export interface CatalogPageProps {}
 
-export type Game = {
+export type GameType = {
   id: number;
   name: string;
   date: string;
