@@ -22,7 +22,11 @@ class ReviewController extends CrudController
 
     protected function setupListOperation() {
         $this->crud->addColumn([
-            'name' => 'name',
+            'name' => 'title',
+            'type' => 'text',
+        ]);
+        $this->crud->addColumn([
+            'name' => 'subtitle',
             'type' => 'text',
         ]);
         $this->crud->addColumn([
@@ -47,24 +51,29 @@ class ReviewController extends CrudController
         $this->crud->setValidation(ReviewRequest::class);
 
         $this->crud->addField([
-            'name' => 'name',
+            'name' => 'title',
             'type' => 'text',
-            'label' => 'Название игры',
+            'label' => 'Заголовок',
         ]);
         $this->crud->addField([
-            'name' => 'date',
+            'name' => 'subtitle',
             'type' => 'text',
-            'label' => 'Дата выхода',
-        ]);
-        $this->crud->addField([
-            'name' => 'imageUrl',
-            'type' => 'text',
-            'label' => 'Главное изображение',
+            'label' => 'Подзаголовок',
         ]);
         $this->crud->addField([
             'name' => 'description',
             'type' => 'textarea',
             'label' => 'Описание',
+        ]);
+        $this->crud->addField([
+            'name' => 'date',
+            'type' => 'text',
+            'label' => 'Дата',
+        ]);
+        $this->crud->addField([
+            'name' => 'imageUrl',
+            'type' => 'text',
+            'label' => 'Главное изображение',
         ]);
     }
 
@@ -79,20 +88,22 @@ class ReviewController extends CrudController
 
     public function store(Request $request) {
         $request->validate([
-            'name' => 'required',
+            'title' => 'required',
+            'subtitle' => 'required',
             'date' => 'required',
             'description' => 'required',
             'imageUrl' => 'required',
         ]);
 
-        $games = $this->crud->create([
-            'name' => $request->name,
-            'date' => $request->date,
+        $reviews = $this->crud->create([
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
             'description' => $request->description,
+            'date' => $request->date,
             'imageUrl' => $request->imageUrl,
         ]);
 
-        $games->save();
+        $reviews->save();
 
         return redirect($this->crud->route);
     }

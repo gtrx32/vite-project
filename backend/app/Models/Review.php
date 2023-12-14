@@ -11,9 +11,10 @@ class Review extends Model
 	use CrudTrait;
 
 	protected $fillable = [
-		'name',
+		'title',
+		'subtitle',
+		'description',
 		'date',
 		'imageUrl',
-		'description',
 	];
 }

@@ -23,10 +23,11 @@ class ReviewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:5|max:255|string',
+            'title' => 'required',
+            'subtitle' => 'required',
+            'description' => 'required',
             'date' => 'required',
             'imageUrl' => 'required',
-            'description' => 'required',
         ];
     }
 
@@ -40,10 +41,11 @@ class ReviewRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Это поле обязательно для заполнения',
+            'title.required' => 'Это поле обязательно для заполнения',
+            'subtitle.required' => 'Это поле обязательно для заполнения',
+            'description.required' => 'Это поле обязательно для заполнения',
             'date.required' => 'Это поле обязательно для заполнения',
             'imageUrl.required' => 'Это поле обязательно для заполнения',
-            'description.required' => 'Это поле обязательно для заполнения',
         ];
     }
 }
