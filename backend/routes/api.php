@@ -30,3 +30,5 @@ Route::get('/games', [ApiController::class, 'games']);
 Route::get('/game/{id}', [ApiController::class, 'game']);
 
 Route::get('/messages', [ApiController::class, 'messages']);
+
+Route::get('/reviews', [ApiController::class, 'reviews']);

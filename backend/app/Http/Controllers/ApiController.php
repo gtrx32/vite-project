@@ -7,6 +7,7 @@ use App\Http\Requests\SugnupRequest;
 use App\Models\User;
 use App\Models\Game;
 use App\Models\Message;
+use App\Models\Review;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -48,6 +49,11 @@ class ApiController extends Controller
     public function messages(): JsonResponse
     {
         return response()->json(Message::all());
+    }
+
+    public function reviews(): JsonResponse
+    {
+        return response()->json(Review::all());
     }
 
     public function createMessage(Request $request): JsonResponse
