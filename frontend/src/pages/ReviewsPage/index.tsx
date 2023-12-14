@@ -7,8 +7,6 @@ import s from './ReviewsPage.module.scss';
 const ReviewsPage = () => {
   const [data, setData] = useState<ReviewType[]>([]);
 
-  console.log(data);
-
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('http://127.0.0.1:8000/api/reviews');
@@ -22,9 +20,10 @@ const ReviewsPage = () => {
   return (
     <MainContainer>
       <div className={s.reviews}>
-        {data.map(({ id, name, description, date }) => (
+        {data.map(({ id, title, subtitle,  description, date }) => (
           <div key={id} className={s.review}>
-            <div className={s['review__name']}>{name}</div>
+            <div className={s['review__name']}>{title}</div>
+            <div className={s['review__name']}>{subtitle}</div>
             <div className={s['review__text']}>{description}</div>
             <div className={s['review__date']}>{date}</div>
           </div>

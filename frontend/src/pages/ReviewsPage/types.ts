@@ -1,6 +1,7 @@
 export type ReviewType = {	
 	id: number
-	name: string
+	title: string
+	subtitle: string
 	imageUrl: string
 	description: string
 	date: string
