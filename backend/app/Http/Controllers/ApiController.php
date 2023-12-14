@@ -77,7 +77,8 @@ class ApiController extends Controller
             $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
-                'password' => Hash::make($data['password'])
+                'password' => Hash::make($data['password']),
+                'is_admin' => "not admin"
             ]);
     
             $token = $user->createToken("main")->plainTextToken;
