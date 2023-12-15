@@ -1,0 +1,16 @@
+#mc-review {
+  padding: 10px;
+  background-color: var(--main-color);
+
+  .mc-review-username,
+  .mc-sort a,
+  .mc-review-body {
+    color: white !important;
+  }
+}
+
+#reviewstitle {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 30px;
+}

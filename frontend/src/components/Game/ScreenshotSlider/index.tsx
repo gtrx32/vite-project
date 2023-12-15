@@ -16,6 +16,7 @@ const ScreenshotSlider: React.FC<ScreenshotSliderProps> = ({ game }) => {
 
   return (
     <div className={s['']}>
+      <h2 className={s.screenshotstitle}>Скриншоты</h2>
       <Swiper slidesPerView={2} spaceBetween={30} loop={true} pagination={{ clickable: true }} navigation={true} modules={[Pagination, Navigation]} className='mySwiper'>
         {sliders.map(({ path, id }) => (
           <SwiperSlide key={id}>
@@ -56,7 +57,7 @@ const ScreenshotSlider: React.FC<ScreenshotSliderProps> = ({ game }) => {
           }
           `}
       </style>
-    </div>
+    </div >
   );
 };
 

@@ -4,6 +4,7 @@
   width: 100%;
   backdrop-filter: blur(5px);
   background-color: var(--main-color-transparent);
+  z-index: 100;
 
   &__inner {
     display: flex;

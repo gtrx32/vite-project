@@ -5,7 +5,6 @@ import MessagesList from './MessagesList';
 const Chat = () => {
   return (
     <div className={s.chat}>
-      <Heading>Чат</Heading>
       <MessagesList />
       <FormMessage />
     </div>

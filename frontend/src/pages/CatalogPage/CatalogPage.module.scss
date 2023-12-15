@@ -1,11 +1,12 @@
 .catalog {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 
   .game {
-    flex: 1 1 20%;
+    flex: 0 0 33%;
     max-width: 350px;
     cursor: pointer;
     position: relative;
@@ -46,6 +47,7 @@
       align-items: center;
       flex-direction: column;
     }
+
     &__name {
       font-size: 30px;
     }

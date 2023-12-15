@@ -1,6 +1,8 @@
 import MainContainer from '../../components/MainContainer';
 import Game from '../../components/Game';
 import { useEffect } from 'react';
+import '../../widget.css'
+import Heading from '../../components/UI/Heading';
 
 const GamePage = () => {
   useEffect(() => {
@@ -31,6 +33,7 @@ const GamePage = () => {
         <b>e</b>
       </a>
       <Game />
+      <h2 id='reviewstitle'>Отзывы</h2>
       <div id='mc-review'></div>
     </MainContainer>
   );

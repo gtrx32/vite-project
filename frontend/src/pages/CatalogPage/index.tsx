@@ -23,14 +23,14 @@ const CatalogPage: React.FC<CatalogPageProps> = () => {
   return (
     <MainContainer>
       <div className={s.catalog}>
-        {data.map(({ id, name, imageUrl, platform }) => (
+        {data.map(({ id, name, imageUrl, genres }) => (
           <div key={id} className={s.game} onClick={() => onHandleClick(id)}>
             <div className={s['game__image']}>
               <img loading='lazy' src={imageUrl} alt='' />
             </div>
             <div className={s['game__info']}>
               <div className={s['game__name']}>{name}</div>
-              <div className={s['game__platform']}>{platform}</div>
+              <div className={s['game__genre']}>{genres.split(',').join(' ')}</div>
             </div>
           </div>
         ))}
