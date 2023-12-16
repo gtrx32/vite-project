@@ -1,10 +1,10 @@
 import MainContainer from '../../../components/MainContainer';
 import s from './Footer.module.scss';
 
-import vkontakte from "../../../../public/icons/vkontakte.png";
-import telegram from "../../../../public/icons/telegram.png";
-import github from "../../../../public/icons/github.png";
-import discord from "../../../../public/icons/discord.png";
+import vkontakte from "../../../images/icons/vkontakte.png";
+import telegram from "../../../images/icons/telegram.png";
+import github from "../../../images/icons/github.png";
+import discord from "../../../images/icons/discord.png";
 
 const Footer: React.FC = () => (
   <footer className={s.footer}>
