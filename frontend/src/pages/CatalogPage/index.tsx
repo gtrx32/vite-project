@@ -20,6 +20,8 @@ const CatalogPage: React.FC<CatalogPageProps> = () => {
 
   const onHandleClick = (gameId: number) => navigate(`/game/${gameId}`);
 
+  document.title = "Каталог";
+
   return (
     <MainContainer>
       <div className={s.catalog}>

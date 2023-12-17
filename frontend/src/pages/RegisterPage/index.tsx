@@ -2,10 +2,13 @@ import MainContainer from '../../components/MainContainer';
 import Register from '../../components/Register';
 import s from './RegisterPage.module.scss';
 
-const RegisterPage = () => (
-  <MainContainer className={s.registerContainer}>
-    <Register />
-  </MainContainer>
-);
+const RegisterPage = () => {
+  document.title = "Регистрация";
 
+  return (
+    <MainContainer className={s.registerContainer}>
+      <Register />
+    </MainContainer>
+  );
+}
 export default RegisterPage;

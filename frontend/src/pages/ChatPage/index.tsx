@@ -6,6 +6,8 @@ interface ChatPageProps {
 }
 
 const ChatPage: React.FC<ChatPageProps> = () => {
+  document.title = "Чат";
+
   return (
     <MainContainer>
       <Chat />

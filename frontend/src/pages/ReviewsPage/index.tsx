@@ -17,10 +17,12 @@ const ReviewsPage = () => {
     fetchData();
   }, []);
 
+  document.title = "Отзывы";
+
   return (
     <MainContainer>
       <div className={s.reviews}>
-        {data.map(({ id, title, subtitle,  description, date }) => (
+        {data.map(({ id, title, subtitle, description, date }) => (
           <div key={id} className={s.review}>
             <div className={s['review__name']}>{title}</div>
             <div className={s['review__name']}>{subtitle}</div>

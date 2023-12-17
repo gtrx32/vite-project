@@ -5,7 +5,7 @@ import Footer from '../elements/Footer';
 import { useStateContext } from '../../context/ContextProvider';
 import { axiosClient } from '../../api/client';
 
-interface PageLayoutProps extends PropsWithChildren {}
+interface PageLayoutProps extends PropsWithChildren { }
 
 const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
   const { setUser } = useStateContext();
@@ -17,10 +17,12 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
   }, []);
 
   return (
-    <div className={s.wrapper}>
-      <Header />
-      <main className={s.main}>{children}</main>
-      <Footer />
+    <div className={s.mainwrapper}>
+      <div className={s.wrapper}>
+        <Header />
+        <main className={s.main}>{children}</main>
+        <Footer />
+      </div>
     </div>
   );
 };

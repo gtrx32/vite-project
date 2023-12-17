@@ -1,0 +1,27 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 50px;
+  }
+
+  .button {
+    width: 150px;
+    max-height: 50px !important;
+    height: 50px;
+    font-size: 18px;
+  }
+}

@@ -1,10 +1,9 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import MainContainer from '../../../components/MainContainer';
 import s from './Header.module.scss';
 import AuthBlock from './AuthBlock';
 
 import logo from "../../../images/logo.png";
-
 
 const Header = () => {
   return (
@@ -12,7 +11,7 @@ const Header = () => {
       <MainContainer>
         <div className={s.header__inner}>
           <div className={s.header__logo}>
-            <NavLink to="/"><img src={logo} alt="logo" /></NavLink>
+            <Link to="/"><img src={logo} alt="logo" /></Link>
           </div>
           <ul>
             <li><NavLink to="/" >Главная</NavLink></li>

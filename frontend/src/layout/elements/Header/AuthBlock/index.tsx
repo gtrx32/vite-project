@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { axiosClient } from '../../../../api/client';
 import { useStateContext } from '../../../../context/ContextProvider';
 import s from './AuthBlock.module.scss';
@@ -19,19 +19,19 @@ const AuthBlock = () => {
     <>
       {user?.name ? (
         <div className={s.auth}>
-          <NavLink to='/profile'>{user?.name}</NavLink>
+          <Link to='/profile'>{user?.name}</Link>
           <button className={s.button} onClick={onLogout}>
             Выйти
           </button>
         </div>
       ) : (
         <div className={s.auth}>
-          <NavLink to='/login' className={s.button}>
+          <Link to='/login' className={s.button}>
             Вход
-          </NavLink>
-          <NavLink to='/register' className={s.button}>
+          </Link>
+          <Link to='/register' className={s.button}>
             Регистрация
-          </NavLink>
+          </Link>
         </div>
       )}
     </>

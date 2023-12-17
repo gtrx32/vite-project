@@ -5,4 +5,11 @@
   border-radius: 5px;
   padding: 10px 25px;
   max-height: 40px;
+
+  transition: .3s all ease !important;
+
+  &:hover {
+    background-color: var(--accent-color1) !important;
+    cursor: pointer !important;
+  }
 }
