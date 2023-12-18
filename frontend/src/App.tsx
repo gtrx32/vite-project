@@ -1,7 +1,7 @@
 import AppRouter from './AppRouter';
-import { ContextProvider, useStateContext } from './context/ContextProvider';
+import { ContextProvider } from './context/ContextProvider';
 import PageLayout from './layout/PageLayout';
-import { BrowserRouter, useNavigate } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (

@@ -2,7 +2,6 @@ import MainContainer from '../../components/MainContainer';
 import Game from '../../components/Game';
 import { useEffect } from 'react';
 import '../../widget.css'
-import Heading from '../../components/UI/Heading';
 
 const GamePage = () => {
   useEffect(() => {

@@ -4,9 +4,8 @@ import s from './MessagesList.module.scss';
 import Message from './Message';
 import { useStateContext } from '../../../context/ContextProvider';
 
-interface MessagesListProps {}
 
-const MessagesList: React.FC<MessagesListProps> = () => {
+const MessagesList = () => {
   const [messages, setMessages] = useState<message[]>([]);
   const { user } = useStateContext();
   const ref = useRef<HTMLDivElement | null>(null);
