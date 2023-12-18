@@ -12,14 +12,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
 
   useEffect(() => {
     if (document.cookie.includes('ACCESS_TOKEN')) {
-      axiosClient
-        .get('/user')
-        .then(({ data }) => {
-          setUser(data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      axiosClient.get('/user').then(({ data }) => {
+        setUser(data);
+      });
     }
   }, []);
 
