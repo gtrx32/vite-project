@@ -55,7 +55,7 @@ class UserCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(UserRequest::class);
+        CRUD::setValidation();
         CRUD::setFromDb(); // set fields from db columns.
 
         /**

@@ -84,7 +84,7 @@ class ApiController extends Controller
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
-                'is_admin' => "not admin"
+                'is_admin' => "not admin",
             ]);
     
             $token = $user->createToken("main")->plainTextToken;
@@ -92,6 +92,22 @@ class ApiController extends Controller
             return response(compact('user', 'token'));
         } catch (\Throwable $e) {
             return response()->json(['message' => $e->getMessage()], 400);
+        }
+    }
+
+    public function setUserAvatar(Request $request): JsonResponse
+    {
+        try {
+            $user = User::where('email', $request->email)->first();
+            $user->avatar = $request->avatar;
+            $user->save();
+    
+            return response()->json([
+                'message' => 'Avatar successfully updated',
+                'data' => $user
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => $th->getMessage()], 400);
         }
     }
 

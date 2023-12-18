@@ -22,6 +22,8 @@ Route::middleware('auth:sanctum')->group(function () {
 	Route::post('/message', [ApiController::class, 'createMessage']);
 });
 
+Route::post('/userAvatar', [ApiController::class, 'setUserAvatar']);
+
 Route::get('/users', [ApiController::class, 'users']);
 Route::post('/signup', [ApiController::class, 'create']);
 Route::post('/login', [ApiController::class, 'login']);
@@ -32,3 +34,4 @@ Route::get('/game/{id}', [ApiController::class, 'game']);
 Route::get('/messages', [ApiController::class, 'messages']);
 
 Route::get('/reviews', [ApiController::class, 'reviews']);
+

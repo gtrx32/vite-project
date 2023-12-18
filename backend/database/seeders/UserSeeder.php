@@ -19,7 +19,8 @@ class UserSeeder extends Seeder
             'name' => 'timur',
             'email' => 'timur@gmail.com',
             'password' => Hash::make('timur'),
-            'is_admin' => "admin"
+            'is_admin' => "admin",
+            'avatar' => '',
         ]);
     }
 
