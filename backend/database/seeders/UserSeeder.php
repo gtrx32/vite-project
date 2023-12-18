@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('timur'),
             'is_admin' => "admin",
             'avatar' => '',
+            'phone' => '',
         ]);
     }
 

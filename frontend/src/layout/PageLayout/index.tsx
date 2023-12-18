@@ -5,15 +5,22 @@ import Footer from '../elements/Footer';
 import { useStateContext } from '../../context/ContextProvider';
 import { axiosClient } from '../../api/client';
 
-interface PageLayoutProps extends PropsWithChildren { }
+interface PageLayoutProps extends PropsWithChildren {}
 
 const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
   const { setUser } = useStateContext();
 
   useEffect(() => {
-    axiosClient.get('/user').then(({ data }) => {
-      setUser(data);
-    });
+    if (document.cookie.includes('ACCESS_TOKEN')) {
+      axiosClient
+        .get('/user')
+        .then(({ data }) => {
+          setUser(data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }, []);
 
   return (

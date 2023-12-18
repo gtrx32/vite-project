@@ -20,9 +20,12 @@ Route::middleware('auth:sanctum')->group(function () {
 	});
 	Route::post('/logout', [ApiController::class, 'logout']);
 	Route::post('/message', [ApiController::class, 'createMessage']);
+
+	Route::post('/userAvatar', [ApiController::class, 'setUserAvatar']);
+	Route::post('/userPhone', [ApiController::class, 'setUserPhone']);
+	
 });
 
-Route::post('/userAvatar', [ApiController::class, 'setUserAvatar']);
 
 Route::get('/users', [ApiController::class, 'users']);
 Route::post('/signup', [ApiController::class, 'create']);

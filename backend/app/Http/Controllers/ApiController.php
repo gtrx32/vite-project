@@ -111,6 +111,22 @@ class ApiController extends Controller
         }
     }
 
+    public function setUserPhone(Request $request): JsonResponse
+    {
+        try {
+            $user = User::where('email', $request->email)->first();
+            $user->phone = $request->phone;
+            $user->save();
+    
+            return response()->json([
+                'message' => 'Phone successfully updated',
+                'data' => $user
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => $th->getMessage()], 400);
+        }
+    }
+
     public function login(LoginRequest $request) 
     {
         $credentials = $request->validated();

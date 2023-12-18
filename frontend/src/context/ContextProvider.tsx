@@ -8,6 +8,7 @@ const StateContext = createContext({
     name: '',
     email: '',
     avatar: '',
+    phone: '',
   },
   notification: '',
   token: '',
@@ -15,6 +16,7 @@ const StateContext = createContext({
   setNotification: (message: string) => {},
   setUser: (user: any) => {},
   setAvatar: (avatar: string) => {},
+  setPhone: (phone: string) => {},
 });
 
 export const ContextProvider = ({ children }: any) => {
@@ -23,19 +25,20 @@ export const ContextProvider = ({ children }: any) => {
     name: '',
     email: '',
     avatar: '',
+    phone: '',
   });
   const [token, _setToken] = useState(cookies.ACCESS_TOKEN ?? '');
   const [notification, _setNotification] = useState('');
-
   const setToken = (token: string) => {
     _setToken(token);
     if (token) {
-
       /**
        * Set Cookie with 60 * 60 * 24 = 86400 seconds = 1 day
-      */
-      setCookie('ACCESS_TOKEN', token, { path: '/', maxAge: 60 * 60 * 24 });
+       */
+      localStorage.setItem('ACCESS_TOKEN', token);
+      setCookie('ACCESS_TOKEN', token, { path: '/', maxAge: 60 * 60 * 24 * 30 });
     } else {
+      localStorage.removeItem('ACCESS_TOKEN');
       removeCookie('ACCESS_TOKEN');
     }
   };
@@ -55,6 +58,13 @@ export const ContextProvider = ({ children }: any) => {
     });
   };
 
+  const setPhone = (phone: string) => {
+    setUser({
+      ...user,
+      phone,
+    });
+  }
+
   return (
     <StateContext.Provider
       value={{
@@ -65,6 +75,7 @@ export const ContextProvider = ({ children }: any) => {
         notification,
         setNotification,
         setAvatar,
+        setPhone
       }}
     >
       {children}
