@@ -13,6 +13,8 @@ const ProfilePage = () => {
   const [phoneError, setPhoneError] = useState('');
   const [avatarError, setAvatarError] = useState('');
 
+  if (!user.email) return null;
+
   const onHandleChangeAvatar = async () => {
     if (user?.email) {
       axiosClient
