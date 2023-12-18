@@ -12,11 +12,11 @@ const StateContext = createContext({
   },
   notification: '',
   token: '',
-  setToken: (token: string) => {},
-  setNotification: (message: string) => {},
-  setUser: (user: any) => {},
-  setAvatar: (avatar: string) => {},
-  setPhone: (phone: string) => {},
+  setToken: (token: string) => { },
+  setNotification: (message: string) => { },
+  setUser: (user: any) => { },
+  setAvatar: (avatar: string) => { },
+  setPhone: (phone: string) => { },
 });
 
 export const ContextProvider = ({ children }: any) => {
@@ -35,10 +35,8 @@ export const ContextProvider = ({ children }: any) => {
       /**
        * Set Cookie with 60 * 60 * 24 = 86400 seconds = 1 day
        */
-      localStorage.setItem('ACCESS_TOKEN', token);
       setCookie('ACCESS_TOKEN', token, { path: '/', maxAge: 60 * 60 * 24 * 30 });
     } else {
-      localStorage.removeItem('ACCESS_TOKEN');
       removeCookie('ACCESS_TOKEN');
     }
   };

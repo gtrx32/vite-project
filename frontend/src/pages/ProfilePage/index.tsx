@@ -45,6 +45,7 @@ const ProfilePage = () => {
     <MainContainer className={s.mainContainer}>
       <div>{user.email}</div>
       <div>{user.name}</div>
+      <div>{user.phone}</div>
       <div>
         <input type='text' placeholder='avatar' onChange={event => setAvatarValue(event.target.value)} value={avatarValue} />
         <button onClick={onHandleChangeAvatar}>update avatar</button>
