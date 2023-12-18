@@ -3,7 +3,7 @@ import MainContainer from '../../components/MainContainer';
 import { useStateContext } from '../../context/ContextProvider';
 import { axiosClient } from '../../api/client';
 
-import s from "./ProfilePage.module.scss";
+import s from './ProfilePage.module.scss';
 
 const ProfilePage = () => {
   const { user, setAvatar, setPhone } = useStateContext();
@@ -29,6 +29,8 @@ const ProfilePage = () => {
 
   return (
     <MainContainer className={s.mainContainer}>
+      <div>{user.email}</div>
+      <div>{user.name}</div>
       <div>
         <input type='text' placeholder='avatar' onChange={event => setAvatarValue(event.target.value)} value={avatarValue} />
         <button onClick={onHandleChangeAvatar}>update avatar</button>
