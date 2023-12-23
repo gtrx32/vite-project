@@ -17,11 +17,6 @@ const AdminPage = () => {
   const { user } = useStateContext();
   const logs = useLogs();
 
-  // useEffect(() => {
-  //   createLog('вход', user.email);
-  //   createLog('вход', user.email);
-  // }, [user.email]);
-
   if (user.is_admin !== 'admin') {
     return null;
   }
