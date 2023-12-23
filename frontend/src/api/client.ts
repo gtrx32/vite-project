@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios';
-import { useCookies } from 'react-cookie';
 
 const getCookieValue = (name: string) => {
   const regex = new RegExp(`(^| )${name}=([^;]+)`);

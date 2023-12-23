@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Game;
 use App\Models\Message;
 use App\Models\Review;
+use App\Models\Log;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -54,6 +55,29 @@ class ApiController extends Controller
     public function reviews(): JsonResponse
     {
         return response()->json(Review::all());
+    }
+
+    public function logs(): JsonResponse
+    {
+        return response()->json(Log::all());
+    }
+
+    public function createLog(Request $request): JsonResponse
+    {
+        try {
+            $log = Log::create([
+                'date' => $request['date'],
+                'action' => $request['action'],
+                'userEmail' => $request['userEmail']
+            ]);
+    
+            return response()->json([
+                'message' => 'Log successfully created',
+                'data' => $log
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
     }
 
     public function createMessage(Request $request): JsonResponse
