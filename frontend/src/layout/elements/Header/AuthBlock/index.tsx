@@ -12,8 +12,8 @@ const AuthBlock = () => {
     axiosClient.post('/logout').then(() => {
       setUser({});
       setToken('');
+      createLog('Выход', user.email);
       navigate('/');
-      createLog('выход', user.email);
     });
   };
 

@@ -6,6 +6,7 @@ import { axiosClient } from '../../api/client';
 import s from './ProfilePage.module.scss';
 import Input from '../../components/UI/Input';
 import Button from '../../components/UI/Button';
+import { createLog } from '../../utils/api/createLog';
 
 const ProfilePage = () => {
   document.title = 'Профиль';
@@ -23,6 +24,7 @@ const ProfilePage = () => {
         .post('/userAvatar', { email: user?.email, avatar: avatarValue })
         .then(() => {
           setAvatar(avatarValue);
+          createLog('Изменение аватара', user.email);
         })
         .catch(error => {
           setAvatarError(error.response.data.message);
@@ -36,6 +38,7 @@ const ProfilePage = () => {
         .post('/userPhone', { email: user?.email, phone: phoneValue })
         .then(() => {
           setPhone(phoneValue);
+          createLog('Изменение номера', user.email);
         })
         .catch(error => {
           setPhoneError(error.response.data.message);

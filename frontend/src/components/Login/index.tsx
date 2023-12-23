@@ -8,6 +8,7 @@ import FormInput from '../UI/FormInput';
 import { LoginUser, initialValue } from './types';
 import { axiosClient } from '../../api/client';
 import { useStateContext } from '../../context/ContextProvider';
+import { createLog } from '../../utils/api/createLog';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const Login = () => {
       .then(({ data }) => {
         setToken(data.token);
         setUser(data.user);
+        createLog('Вход', user.email);
         navigate('/');
       })
       .catch(error => {

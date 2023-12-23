@@ -21,7 +21,7 @@ const Header = () => {
             {/* <li><NavLink to="/reviews" >Обзоры</NavLink></li> */}
             <li><NavLink to="/catalog" >Каталог</NavLink></li>
             <li><NavLink to="/chat" >Чат</NavLink></li>
-            {user.is_admin === 'admin' && <li><NavLink to="/admin-page" >Админ панель</NavLink></li>}
+            {user.is_admin === 'admin' && <li><NavLink to="/admin-page" >Активность</NavLink></li>}
           </ul>
           <AuthBlock />
         </div>

@@ -1,13 +1,15 @@
 import { axiosClient } from '../../api/client';
 
 export enum ActionsEnum {
-  LOGIN = 'вход',
-  LOGOUT = 'выход',
-  SEND_MESSAGE = 'отправка сообщения',
+  LOGIN = 'Вход',
+  LOGOUT = 'Выход',
+  SEND_MESSAGE = 'Отправка сообщения',
+  CHANGE_AVATAR = 'Изменение аватара',
+  CHANGE_PHONE = 'Изменение номера',
 }
 
 export const createLog = async (action: `${ActionsEnum}`, userEmail: string) => {
-  const date = new Date((Math.random() * 1000000000000) % Date.now());
+  const date = new Date(Date.now());
 
   return await axiosClient
     .post('/log', { action, userEmail, date: date as unknown as string })

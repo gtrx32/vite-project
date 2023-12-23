@@ -24,7 +24,7 @@ const FormMessage = () => {
     };
 
     axiosClient.post('/message', payload).then(() => {
-      createLog('отправка сообщения', user.email);
+      createLog('Отправка сообщения', user.email);
     });
     setValue('');
   };
