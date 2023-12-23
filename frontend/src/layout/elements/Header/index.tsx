@@ -4,8 +4,11 @@ import s from './Header.module.scss';
 import AuthBlock from './AuthBlock';
 
 import logo from "../../../images/logo.png";
+import { useStateContext } from '../../../context/ContextProvider';
 
 const Header = () => {
+  const { user } = useStateContext();
+
   return (
     <header className={s.header}>
       <MainContainer>
@@ -18,6 +21,7 @@ const Header = () => {
             {/* <li><NavLink to="/reviews" >Обзоры</NavLink></li> */}
             <li><NavLink to="/catalog" >Каталог</NavLink></li>
             <li><NavLink to="/chat" >Чат</NavLink></li>
+            {user.is_admin === 'admin' && <li><NavLink to="/admin-page" >Админ панель</NavLink></li>}
           </ul>
           <AuthBlock />
         </div>

@@ -5,10 +5,9 @@ import { useStateContext } from '../../../context/ContextProvider';
 import s from './FormMessage.module.scss';
 import { format } from 'date-fns';
 import { axiosClient } from '../../../api/client';
+import { createLog } from '../../../utils/api/createLog';
 
-interface FormMessageProps {}
-
-const FormMessage: React.FC<FormMessageProps> = () => {
+const FormMessage = () => {
   const [value, setValue] = useState<string>('');
   const { user } = useStateContext();
 
@@ -24,7 +23,9 @@ const FormMessage: React.FC<FormMessageProps> = () => {
       date: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
     };
 
-    axiosClient.post('/message', payload);
+    axiosClient.post('/message', payload).then(() => {
+      createLog('отправка сообщения', user.email);
+    });
     setValue('');
   };
 

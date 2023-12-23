@@ -2,6 +2,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { axiosClient } from '../../../../api/client';
 import { useStateContext } from '../../../../context/ContextProvider';
 import s from './AuthBlock.module.scss';
+import { createLog } from '../../../../utils/api/createLog';
 
 const AuthBlock = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const AuthBlock = () => {
       setUser({});
       setToken('');
       navigate('/');
+      createLog('выход', user.email);
     });
   };
 
