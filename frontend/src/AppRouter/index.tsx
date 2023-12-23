@@ -8,6 +8,7 @@ import LoginPage from '../pages/LoginPage';
 import ProfilePage from '../pages/ProfilePage';
 import GamePage from '../pages/GamePage';
 import NotFoundPage from '../pages/NotFoundPage';
+import AdminPage from '../pages/AdminPage';
 
 const AppRouter = () => (
   <Routes>
@@ -21,6 +22,7 @@ const AppRouter = () => (
     <Route path='/game/:id' element={<GamePage />} />
     <Route path='*' element={<MainPage />} />
     <Route path='/404' element={<NotFoundPage />} />
+    <Route path='/admin-page' element={<AdminPage />} />
   </Routes>
 );
 

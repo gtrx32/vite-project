@@ -9,14 +9,15 @@ const StateContext = createContext({
     email: '',
     avatar: '',
     phone: '',
+    is_admin: '',
   },
   notification: '',
   token: '',
-  setToken: (token: string) => { },
-  setNotification: (message: string) => { },
-  setUser: (user: any) => { },
-  setAvatar: (avatar: string) => { },
-  setPhone: (phone: string) => { },
+  setToken: (token: string) => {},
+  setNotification: (message: string) => {},
+  setUser: (user: any) => {},
+  setAvatar: (avatar: string) => {},
+  setPhone: (phone: string) => {},
 });
 
 export const ContextProvider = ({ children }: any) => {
@@ -26,6 +27,7 @@ export const ContextProvider = ({ children }: any) => {
     email: '',
     avatar: '',
     phone: '',
+    is_admin: '',
   });
   const [token, _setToken] = useState(cookies.ACCESS_TOKEN ?? '');
   const [notification, _setNotification] = useState('');
@@ -61,7 +63,7 @@ export const ContextProvider = ({ children }: any) => {
       ...user,
       phone,
     });
-  }
+  };
 
   return (
     <StateContext.Provider
@@ -73,7 +75,7 @@ export const ContextProvider = ({ children }: any) => {
         notification,
         setNotification,
         setAvatar,
-        setPhone
+        setPhone,
       }}
     >
       {children}
