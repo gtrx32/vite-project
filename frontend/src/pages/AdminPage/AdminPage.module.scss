@@ -1,9 +1,20 @@
-.number {
+.logs {
   background-color: var(--main-color-transparent);
-  padding: 20px;
-  font-size: 24px;
   margin-bottom: 10px;
-  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  &__number {
+    padding: 20px;
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  &__button {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
 }
 
 .charts {

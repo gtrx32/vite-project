@@ -6,6 +6,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import { Line } from 'react-chartjs-2';
 import { Doughnut } from 'react-chartjs-2';
 import { getDataForDays, getDataForHours, getTotalData, labelsForDays, labelsForHours, labelsTotal, optionsForHours, optionsForDays, optionsTotal } from './types';
+import Button from '../../components/UI/Button';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
 
@@ -21,7 +22,7 @@ const AdminPage = () => {
     const element = document.createElement('a');
     const file = new Blob([logs.map(log => log.date + ' ' + log.userEmail + ' ' + log.action).join('\r\n')], { type: 'text/plain' });
     element.href = URL.createObjectURL(file);
-    element.download = 'myFile.txt';
+    element.download = 'logs.txt';
     document.body.appendChild(element);
     element.click();
   };
@@ -104,18 +105,18 @@ const AdminPage = () => {
       {
         label: 'Количество',
         data: getTotalData(logs),
-        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'],
-        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'],
-        borderWidth: 1,
+        backgroundColor: ['rgba(0, 57, 92, 0.4)', 'rgba(96, 72, 135, 0.4)', 'rgba(190, 73, 134, 0.4)', 'rgba(253, 99, 90, 0.4)', 'rgba(255, 166, 0, 0.4)'],
+        borderColor: ['rgba(0, 57, 92, 1)', 'rgba(96, 72, 135, 1)', 'rgba(190, 73, 134, 1)', 'rgba(253, 99, 90, 1)', 'rgba(255, 166, 0, 1)'],
+        borderWidth: 2,
       },
     ],
   };
 
   return (
     <MainContainer className={s.page}>
-      <div className={s.number}>
-        Общее количество действий пользователей за всё время: {logs.length}
-        <button onClick={downloadTxtFile}>Download txt</button>
+      <div className={s.logs}>
+        <div className={s.logs__number}>Общее количество действий пользователей за всё время: {logs.length}</div>
+        <Button className={s.logs__button} onClick={downloadTxtFile}>Скачать журнал</Button>
       </div>
       <div className={s.charts}>
         <div className={s.top}>
