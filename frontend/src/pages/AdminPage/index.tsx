@@ -19,7 +19,7 @@ const AdminPage = () => {
 
   const downloadTxtFile = () => {
     const element = document.createElement('a');
-    const file = new Blob([(document.getElementById('input')! as HTMLInputElement).value], { type: 'text/plain' });
+    const file = new Blob([logs.map(log => log.date + ' ' + log.userEmail + ' ' + log.action).join('\r\n')], { type: 'text/plain' });
     element.href = URL.createObjectURL(file);
     element.download = 'myFile.txt';
     document.body.appendChild(element);
@@ -115,7 +115,6 @@ const AdminPage = () => {
     <MainContainer className={s.page}>
       <div className={s.number}>
         Общее количество действий пользователей за всё время: {logs.length}
-        <textarea style={{ opacity: 0, position: 'absolute', overflow: 'hidden', pointerEvents: 'none', userSelect: 'none' }} id='input' value={logs.map(log => log.date + ' ' + log.userEmail + ' ' + log.action).join('\r\n')} />
         <button onClick={downloadTxtFile}>Download txt</button>
       </div>
       <div className={s.charts}>
