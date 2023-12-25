@@ -115,7 +115,7 @@ const AdminPage = () => {
     <MainContainer className={s.page}>
       <div className={s.number}>
         Общее количество действий пользователей за всё время: {logs.length}
-        <textarea style={{ opacity: 0, position: 'absolute', overflow: 'hidden' }} id='input' value={logs.map(log => log.date + ' ' + log.userEmail + ' ' + log.action).join('\r\n')} />
+        <textarea style={{ opacity: 0, position: 'absolute', overflow: 'hidden', pointerEvents: 'none', userSelect: 'none' }} id='input' value={logs.map(log => log.date + ' ' + log.userEmail + ' ' + log.action).join('\r\n')} />
         <button onClick={downloadTxtFile}>Download txt</button>
       </div>
       <div className={s.charts}>
