@@ -5,11 +5,7 @@ import { useLogs } from '../../hooks/useLogs';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { Doughnut } from 'react-chartjs-2';
-import {
-  getDataForDays, getDataForHours, getTotalData,
-  labelsForDays, labelsForHours, labelsTotal,
-  optionsForHours, optionsForDays, optionsTotal
-} from './types';
+import { getDataForDays, getDataForHours, getTotalData, labelsForDays, labelsForHours, labelsTotal, optionsForHours, optionsForDays, optionsTotal } from './types';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
 
@@ -20,6 +16,15 @@ const AdminPage = () => {
   if (user.is_admin !== 'admin') {
     return null;
   }
+
+  const downloadTxtFile = () => {
+    const element = document.createElement('a');
+    const file = new Blob([(document.getElementById('input')! as HTMLInputElement).value], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = 'myFile.txt';
+    document.body.appendChild(element);
+    element.click();
+  };
 
   const dataForHours = {
     labels: labelsForHours,
@@ -99,20 +104,8 @@ const AdminPage = () => {
       {
         label: 'Количество',
         data: getTotalData(logs),
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-        ],
+        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'],
         borderWidth: 1,
       },
     ],
@@ -120,7 +113,11 @@ const AdminPage = () => {
 
   return (
     <MainContainer className={s.page}>
-      <div className={s.number}>Общее количество действий пользователей за всё время: {logs.length}</div>
+      <div className={s.number}>
+        Общее количество действий пользователей за всё время: {logs.length}
+        <textarea style={{ opacity: 0, position: 'absolute', overflow: 'hidden' }} id='input' value={logs.map(log => log.date + ' ' + log.userEmail + ' ' + log.action).join('\r\n')} />
+        <button onClick={downloadTxtFile}>Download txt</button>
+      </div>
       <div className={s.charts}>
         <div className={s.top}>
           <div className={s.chartBoxHours}>
