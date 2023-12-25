@@ -12,7 +12,7 @@ const GamePage = () => {
     script.insertAdjacentHTML(
       'afterbegin',
       `cackle_widget = window.cackle_widget || [];
-    cackle_widget.push({widget: 'Review', id: 80947});
+    cackle_widget.push({widget: 'Review', id: 80958});
     (function() {
         var mc = document.createElement('script');
         mc.type = 'text/javascript';
